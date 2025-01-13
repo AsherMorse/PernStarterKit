@@ -1,0 +1,63 @@
+services:
+  database:
+    build: 
+      context: ./database
+      dockerfile: Dockerfile
+    container_name: pern_database
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend_net
+    ports:
+      - "127.0.0.1:5438:5432"  # Only allow local connections
+    restart: unless-stopped
+
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: pern_server
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=database
+      - PORT=3000
+      - NODE_ENV=${NODE_ENV}
+    networks:
+      - backend_net
+      - frontend_net
+    depends_on:
+      - database
+    ports:
+      - "127.0.0.1:3000:3000"  # Only allow local connections
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: pern_client
+    environment:
+      - REACT_APP_API_URL=${API_URL:-http://localhost:3000}
+    networks:
+      - frontend_net
+    depends_on:
+      - server
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+
+networks:
+  backend_net:
+    internal: true  # This network is not accessible from outside Docker
+  frontend_net:
+    # This network allows external access for the client
+
+volumes:
+  db-data:
+    driver: local 

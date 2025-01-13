@@ -1,0 +1,48 @@
+{
+  "name": "pern-starter-server",
+  "version": "1.0.0",
+  "description": "Express server for PERN stack",
+  "engines": {
+    "node": ">=18.20.0",
+    "npm": ">=10.8.0"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.js\"",
+    "pretest": "node ../database/init.test.db.js",
+    "test": "mocha \"tests/**/*.test.js\" --recursive",
+    "db:migrate": "node src/db/migrate.js",
+    "db:seed": "node src/db/seed.js",
+    "clean": "rm -rf node_modules coverage"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cookie-parser": "^1.4.6",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "express-session": "^1.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "supertest": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "mocha": "^10.2.0",
+    "chai": "^4.3.10",
+    "chai-http": "^4.4.0"
+  },
+  "type": "module"
+} 

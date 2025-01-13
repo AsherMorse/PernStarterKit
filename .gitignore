@@ -1,0 +1,56 @@
+# Development guides
+TASKS.md
+
+# Dependencies
+node_modules/
+server/node_modules/
+client/node_modules/
+database/node_modules/
+
+# Production builds
+build/
+dist/
+
+# Test coverage
+coverage/
+**/coverage/
+tests/cypress/videos/
+tests/cypress/screenshots/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Others
+*.local 
+
+# Cypress
+client/tests/cypress/
+client/cypress/
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Other
+.old/ 

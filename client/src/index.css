@@ -1,18 +1,29 @@
+/* 
+ * index.css - Global Styles
+ *
+ * Global CSS styles for the PERN Stack application.
+ * Includes base styles, typography, and dark/light theme support.
+ */
+
+/* Base styles and typography */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+  /* Theme colors - dark mode default */
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  /* Font rendering optimizations */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Layout */
 body {
   margin: 0;
   display: flex;
@@ -21,6 +32,7 @@ body {
   min-height: 100vh;
 }
 
+/* Container */
 .App {
   max-width: 1280px;
   margin: 0 auto;
@@ -28,11 +40,13 @@ body {
   text-align: center;
 }
 
+/* Typography */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/* Buttons */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -54,6 +68,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light theme overrides */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

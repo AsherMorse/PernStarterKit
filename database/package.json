@@ -1,9 +1,9 @@
 {
   "name": "pern-starter-database",
   "version": "1.0.0",
-  "description": "Database module for PERN stack",
+  "description": "Database module for PERN stack - Handles PostgreSQL connection and schema management",
   "type": "module",
-  "main": "db.js",
+  "main": "db.config.js",
   "dependencies": {
     "pg": "^8.11.3",
     "dotenv": "^16.3.1"

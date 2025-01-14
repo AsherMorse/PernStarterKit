@@ -54,7 +54,7 @@ A high-level look at the folders and their purposes:
 
 - **database/**  
   Contains database-related files:
-  - `db.js` exports a pooled PostgreSQL connection.  
+  - `db.config.js` exports a pooled PostgreSQL connection.  
   - `init.sql` schema for initializing your production database.  
   - `init.test.sql` schema for test databases.  
   - `init.test.db.js` script to create a fresh test database (used before running backend tests).  

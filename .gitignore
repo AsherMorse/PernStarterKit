@@ -1,56 +1,59 @@
-# Development guides
-TASKS.md
-
-# Dependencies
+# Node.js Dependencies
+# Ignore all node_modules directories across the monorepo
 node_modules/
 server/node_modules/
 client/node_modules/
 database/node_modules/
 
-# Production builds
+# Build Output
+# Ignore production build artifacts
 build/
 dist/
 
-# Test coverage
+# Testing and Coverage
+# Ignore test coverage reports and Cypress test artifacts
 coverage/
 **/coverage/
 tests/cypress/videos/
 tests/cypress/screenshots/
 
-# Environment variables
+# Environment Files
+# Ignore all .env files except example template
 .env
 .env.*
 !.env.example
 
-# Logs
+# Debug Logs
+# Ignore various debug and error logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Editor directories and files
+# IDE and Editor Files
+# Ignore IDE-specific settings and swap files
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# OS generated files
+# Operating System Files
+# Ignore OS-generated files and directories
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 
-# Others
+# Local Development
+# Ignore local-only files
 *.local 
 
-# Cypress
+# Cypress Testing
+# Ignore Cypress generated files and directories
 client/tests/cypress/
 client/cypress/
 cypress/screenshots/
 cypress/videos/
 cypress/downloads/
-
-# Other
-.old/ 

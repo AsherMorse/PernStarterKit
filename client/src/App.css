@@ -1,3 +1,11 @@
+/* 
+ * App.css - App Component Styles
+ *
+ * Component-specific styles for the main App component.
+ * Uses a clean, minimal design with responsive layout.
+ */
+
+/* Main container - centered with max-width */
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -5,12 +13,14 @@ main {
   text-align: center;
 }
 
+/* Primary heading styles */
 h1 {
-  color: #2c3e50;
+  color: #2c3e50;  /* Dark blue-grey */
   margin-bottom: 1rem;
 }
 
+/* Paragraph text styles */
 p {
-  color: #34495e;
+  color: #34495e;  /* Lighter blue-grey */
   line-height: 1.6;
 } 

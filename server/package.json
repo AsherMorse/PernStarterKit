@@ -1,12 +1,13 @@
 {
   "name": "pern-starter-server",
   "version": "1.0.0",
-  "description": "Express server for PERN stack",
+  "description": "Express server for PERN stack - Handles API endpoints, authentication, and database interactions",
   "engines": {
     "node": ">=18.20.0",
     "npm": ">=10.8.0"
   },
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
@@ -14,7 +15,7 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier --write \"src/**/*.js\"",
     "pretest": "node ../database/init.test.db.js",
-    "test": "mocha \"tests/**/*.test.js\" --recursive",
+    "test": "mocha \"__tests__/**/*.test.js\" --recursive",
     "db:migrate": "node src/db/migrate.js",
     "db:seed": "node src/db/seed.js",
     "clean": "rm -rf node_modules coverage"
@@ -43,6 +44,5 @@
     "mocha": "^10.2.0",
     "chai": "^4.3.10",
     "chai-http": "^4.4.0"
-  },
-  "type": "module"
+  }
 } 

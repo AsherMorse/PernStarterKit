@@ -1,0 +1,134 @@
+# Cursor Rules
+
+These rules ensure consistency, clarity, security, and maintainability across database schemas, backend services, and frontend React components. Follow them to keep the project organized and documented.
+
+---
+
+## 1. General Rules
+- Code Organization: Adhere to existing backend (Express) and frontend (React) structures; group related functionality.  
+- Passport & Security: Use Local Strategy (session or JWT), strip out private data before returning user objects, and configure Helmet, rate limiter, CORS.  
+- Avoid Duplication: Keep logic DRY (Don’t Repeat Yourself), refactor duplicated code, and split large files into smaller modules.
+
+---
+
+## 2. Naming Conventions
+### 2.1 Database
+- Tables: plural, snake_case (e.g., user_profiles).  
+- Columns: singular, snake_case (e.g., created_at).  
+- Foreign keys: <table>_id (e.g., user_id).  
+- Indexes: idx_<table>_<column> (e.g., idx_users_email).  
+- Migrations: YYYYMMDD_description.sql (e.g., 20231201_add_user_roles.sql).
+
+### 2.2 Backend (Express/Node)
+- Controllers: kebab-case.controller.js (e.g., auth.controller.js).  
+- Services: kebab-case-service.js (e.g., auth-service.js).  
+- Routes: kebab-case.routes.js (e.g., user.routes.js).  
+- Middleware: kebab-case.middleware.js (e.g., auth.middleware.js).  
+- Config: kebab-case.config.js (e.g., database.config.js).  
+- Types/Interfaces: PascalCase (types) or I-prefixed (interfaces).  
+- Utilities: kebab-case.js (e.g., string-utils.js).  
+- Tests: __tests__ with .test.tsx/.test.jsx suffix, or *.test.js/*.test.jsx for Jest/Mocha/Cypress.  
+- Mocks: tests/__mocks__/ directory for mock files.  
+- Env files: .env.development, .env.production, .env.local, .env.example.
+
+### 2.3 Frontend (React)
+- Components: directories in kebab-case (e.g., user-profile/), files in PascalCase.jsx (e.g., UserProfile.jsx).  
+- Hooks: camelCase + "use" prefix (e.g., useAuth.js).  
+- Store: kebab-case.store.js (e.g., user.store.js).  
+- Utilities: kebab-case.js (e.g., date.utils.js).  
+- Styles: kebab-case.css (e.g., button.css).  
+- Tests: *.test.jsx or *.test.js in __tests__.  
+- Mocks: matching filenames in __mocks__.
+
+---
+
+## 3. Domain Models
+- Directory Structure: src/models/ for domain/shared models, with subfolders (e.g., api/) for request/response models.  
+- Domain Objects: Plain JS classes/objects (e.g., User, AuthData). Keep logical operations inside these objects.  
+- Shared Utilities (common.model.js): Reusable validators, formatters, or constants.  
+- API Models (api/*.js): Request or response schemas, often prefixed with “Api” (e.g., user.api.model.js).  
+- Store Objects: Define Redux/Zustand slices referencing domain models (e.g., user.store.js).  
+- Naming Conventions: PascalCase for domain objects, “Api” or “Request”/“Response” for external data, “Store” suffix for store definitions.  
+- Import Rules: Maintain consistent imports, avoid deeply nested paths.
+
+---
+
+## 4. Passport Configuration
+- Required Variables: SESSION_SECRET, JWT_SECRET (never committed).  
+- Keep core Passport config in config/passport.js; remove sensitive data before returning user info.  
+- For OAuth strategies, use separate files named similarly.
+
+---
+
+## 5. Environment Variables
+- Update .env.example whenever adding/renaming vars.  
+- Keep secrets out of version control (use .env.local).  
+- Separate variables by purpose (DB, AUTH, API).
+
+---
+
+## 6. File Structure
+- Organize components, hooks, and utilities into kebab-case directories.  
+- Passport/Auth logic in a dedicated auth/ folder.  
+- Add new files according to naming guidelines.
+
+---
+
+## 7. Git Rules
+1. Commits:  
+   - Step by step: git status → git add <files> → git commit -m "message" → git push  
+   - Lowercase, present tense, no period.  
+   - Reference features/bugs if needed.  
+2. Commit Types: feat, fix, docs, style, refactor, test, chore.
+
+---
+
+## 8. Documentation Rules
+- File Top: Brief purpose statement.  
+- Functions/Methods: Short docstrings.  
+- Extended Docs: Use Markdown (e.g., README.md, roadmap.md).  
+- .env.example: Update for new variables.  
+- Templates: docs/templates/ for consistent style.
+
+---
+
+## 9. Frontend-Specific Rules
+- Next.js: specify "use client" or "use server" as needed.  
+- Maintain ESLint/Prettier formatting.  
+- Data Fetching: use fetch, Axios, or React Query consistently; handle loading/errors in the store if shared.
+
+---
+
+## 10. Backend-Specific Rules
+- Database: always include createdAt, updatedAt; use enums for limited sets.  
+- CRUD Patterns: define meaningful error handling/logging.  
+- Keep environment variables in .env.*.
+
+---
+
+## 11. Development Workflow
+1. Use feature branches and commit frequently.  
+2. Merge into dev/staging before production.  
+3. Use semantic versioning.  
+4. Maintain a CHANGELOG.md.  
+5. Mark off tasks in roadmap.md with timestamps.  
+6. Keep code DRY; refactor duplicates.  
+7. Favor small, focused functions.  
+8. Split large files into smaller modules.  
+9. Document each development session under docs/AI/sessions/[date], following the session template (see docs/AI/sessions/README.md).  
+10. Follow the prompts in docs/AI/sessions/Prompts.md to start, maintain, and conclude each session, ensuring regular updates to tasks, decisions, and code changes.
+
+---
+
+## 12. Configuration Files
+- Only modify config files (.env, etc.) when necessary or requested.  
+- Document config dependencies in file-level comments.
+
+---
+
+## 13. Testing Rules
+- Write or update tests for each new feature, bug fix, or refactor.  
+- Keep tests in the same structure (__tests__/ directory) to maintain consistency.  
+- Achieve meaningful coverage for all core logic (preferably >80%).  
+- Integrate tests into CI/CD to ensure they run automatically on each push.  
+- Use separate test environments if needed (avoid polluting production or development data).

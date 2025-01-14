@@ -1,4 +1,19 @@
+# PERN Stack Development Environment
+#
+# This docker-compose file sets up a complete development environment with:
+# - PostgreSQL database
+# - Express backend server
+# - React frontend with Nginx
+#
+# Environment Variables Required:
+# - DB_USER: Database username
+# - DB_PASSWORD: Database password
+# - DB_NAME: Database name
+# - NODE_ENV: Environment mode
+# - API_URL: Backend API URL (default: http://localhost:3000)
+
 services:
+  # PostgreSQL Database Service
   database:
     build: 
       context: ./database
@@ -9,13 +24,14 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data  # Persistent database storage
     networks:
       - backend_net
     ports:
       - "127.0.0.1:5438:5432"  # Only allow local connections
     restart: unless-stopped
 
+  # Express Backend Service
   server:
     build: 
       context: ./server
@@ -25,18 +41,19 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
-      - DB_HOST=database
+      - DB_HOST=database  # Uses Docker DNS resolution
       - PORT=3000
       - NODE_ENV=${NODE_ENV}
     networks:
-      - backend_net
-      - frontend_net
+      - backend_net  # For database access
+      - frontend_net # For client access
     depends_on:
       - database
     ports:
       - "127.0.0.1:3000:3000"  # Only allow local connections
     restart: unless-stopped
 
+  # React Frontend Service
   client:
     build:
       context: ./client
@@ -49,15 +66,17 @@ services:
     depends_on:
       - server
     ports:
-      - "5173:80"
+      - "5173:80"  # Expose Nginx on port 5173
     restart: unless-stopped
 
+# Network Configuration
 networks:
   backend_net:
     internal: true  # This network is not accessible from outside Docker
   frontend_net:
     # This network allows external access for the client
 
+# Persistent Storage
 volumes:
   db-data:
     driver: local 

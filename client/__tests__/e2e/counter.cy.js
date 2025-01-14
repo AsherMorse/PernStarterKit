@@ -1,4 +1,20 @@
+/**
+ * counter.cy.js - Counter Component End-to-End Tests
+ * 
+ * End-to-end tests for the counter component using Cypress.
+ * Tests the counter's functionality including API interactions,
+ * state management, and persistence across page reloads.
+ * 
+ * @group E2E Tests
+ * @group Counter Component
+ */
+
 describe('Counter E2E Tests', () => {
+  /**
+   * Before each test:
+   * 1. Intercept initial GET request to set count to 0
+   * 2. Visit homepage and wait for counter data
+   */
   beforeEach(() => {
     // Intercept the initial GET request to always return count as 0
     cy.intercept('GET', `${Cypress.env('apiUrl')}/api/counter`, {
@@ -11,6 +27,10 @@ describe('Counter E2E Tests', () => {
     cy.wait('@getCounter');
   });
 
+  /**
+   * Test basic increment functionality
+   * Verifies initial state and single increment operation
+   */
   it('shows initial count as 0 and increments when clicked', () => {
     // Check initial state
     cy.contains('Current count: 0').should('be.visible');
@@ -30,6 +50,10 @@ describe('Counter E2E Tests', () => {
     cy.contains('Current count: 1').should('be.visible');
   });
 
+  /**
+   * Test multiple increment operations
+   * Verifies counter behaves correctly with consecutive clicks
+   */
   it('tracks multiple consecutive increments correctly', () => {
     // Check initial state
     cy.contains('Current count: 0').should('be.visible');
@@ -53,6 +77,10 @@ describe('Counter E2E Tests', () => {
     }
   });
 
+  /**
+   * Test counter state persistence
+   * Verifies count is maintained after page reload
+   */
   it('persists count after page reload', () => {
     // Setup initial count as 5
     cy.intercept('GET', `${Cypress.env('apiUrl')}/api/counter`, {

@@ -1,8 +1,6 @@
 {
-  "extension": ["js"],
-  "spec": "tests/**/*.test.js",
-  "watch-files": ["src/**/*.js", "tests/**/*.js"],
-  "require": ["./tests/setup.js"],
-  "timeout": 10000,
-  "exit": true
+  "exit": true,
+  "spec": "__tests__/**/*.test.js",
+  "watch-files": ["src/**/*.js", "__tests__/**/*.js"],
+  "require": ["./__tests__/setup.js"]
 } 

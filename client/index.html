@@ -1,13 +1,39 @@
 <!DOCTYPE html>
+<!--
+  index.html - PERN Stack Application Entry Point
+  
+  This is the main HTML file that serves as the entry point for the React application.
+  It provides the basic HTML structure and loads the necessary resources.
+  
+  Features:
+  - Modern HTML5 doctype and language specification
+  - Responsive viewport configuration
+  - UTF-8 character encoding
+  - React root mounting point
+  - Vite module loading
+-->
 <html lang="en">
   <head>
+    <!-- Character encoding -->
     <meta charset="UTF-8" />
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- Responsive viewport settings -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary meta tags -->
+    <meta name="description" content="PERN Stack starter application with React frontend" />
+    <meta name="theme-color" content="#ffffff" />
+    
     <title>PERN Stack App</title>
   </head>
   <body>
+    <!-- React application root -->
     <div id="root"></div>
+    
+    <!-- Application entry point -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html> 

@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../src/app.js';
 import { mockSession } from '../setup.js';
-import { cleanDb, checkDbConnection } from '../helpers/db.js';
+import { cleanDb, checkDbConnection } from '../helpers/db-utils.js';
 
 chai.use(chaiHttp);
 const { expect } = chai;

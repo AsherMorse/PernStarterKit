@@ -13,13 +13,13 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./tests/setup.js'],
+    setupFiles: ['./__tests__/setup.js'],
     css: true, // Handle CSS imports during testing
     coverage: {
       reporter: ['text', 'json', 'html'],
       exclude: [
         'node_modules/',
-        'tests/setup.js',
+        './__tests__/setup.js',
       ],
     },
   },

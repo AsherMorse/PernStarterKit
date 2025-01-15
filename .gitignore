@@ -1,30 +1,25 @@
 # Node.js Dependencies
-# Ignore all node_modules directories across the monorepo
 node_modules/
-server/node_modules/
-client/node_modules/
-database/node_modules/
 
 # Build Output
-# Ignore production build artifacts
 build/
 dist/
 
 # Testing and Coverage
-# Ignore test coverage reports and Cypress test artifacts
 coverage/
 **/coverage/
-tests/cypress/videos/
-tests/cypress/screenshots/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
 
 # Environment Files
-# Ignore all .env files except example template
 .env
 .env.*
 !.env.example
 
 # Debug Logs
-# Ignore various debug and error logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -32,14 +27,12 @@ yarn-error.log*
 pnpm-debug.log*
 
 # IDE and Editor Files
-# Ignore IDE-specific settings and swap files
 .idea/
 .vscode/
 *.swp
 *.swo
 
 # Operating System Files
-# Ignore OS-generated files and directories
 .DS_Store
 .DS_Store?
 ._*
@@ -47,13 +40,4 @@ pnpm-debug.log*
 .Trashes
 
 # Local Development
-# Ignore local-only files
-*.local 
-
-# Cypress Testing
-# Ignore Cypress generated files and directories
-client/tests/cypress/
-client/cypress/
-cypress/screenshots/
-cypress/videos/
-cypress/downloads/
+*.local

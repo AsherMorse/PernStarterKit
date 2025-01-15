@@ -146,7 +146,7 @@ The easiest way to run the project is using our provided Docker scripts:
 
 1. Start all services:
 ```bash
-./scripts/start.sh | cat
+./scripts/start.sh
 ```
 This script will:
 - Build and start all containers (`database`, `server`, and `client`)
@@ -156,17 +156,17 @@ This script will:
 
 2. View logs (optional):
 ```bash
-./scripts/logs.sh | cat
+./scripts/logs.sh
 ```
 
 3. Stop all services:
 ```bash
-./scripts/stop.sh | cat
+./scripts/stop.sh
 ```
 
 4. Clean up resources (optional):
 ```bash
-./scripts/cleanup.sh | cat
+./scripts/cleanup.sh
 ```
 
 ### 4. Running Locally (without Docker)
